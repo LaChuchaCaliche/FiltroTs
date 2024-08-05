@@ -9,11 +9,15 @@ import {
     ForeignKey,
     BelongsTo,
   } from "sequelize-typescript";
+import { Cart } from "./carts";
+import { Product } from "./product";
+ 
+  
   @Table({
-    tableName: "users",
+    tableName: "ProductCart",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
   })
-  export class User extends Model {
+  export class ProductCart extends Model {
     @PrimaryKey
     @AutoIncrement
     @Column({
@@ -22,23 +26,31 @@ import {
     id!: number;
 
     @Column({
-      type: DataType.STRING(200),
+      type: DataType.INTEGER,
       allowNull: false,
       unique: true,
     })
-    email!: string;
-    @Column({
-      type: DataType.STRING(200),
-      allowNull: false
-    })
-    password!: string;
-    @ForeignKey(()=>Rol)
+    quantity!: number;
+   
+    @ForeignKey(()=>Cart)
     @Column({
       type: DataType.INTEGER,
       allowNull:false
     })
-    roleId!: number;
-    @BelongsTo(()=>Rol);
-    role!:Rol;
+    cartId!: number;
+    @BelongsTo(()=>Cart)
+    cart!:Cart;
+
+    @ForeignKey(()=>Product)
+    @Column({
+      type: DataType.INTEGER,
+      allowNull:false
+    })
+    productId!: number;
+    @BelongsTo(()=>Product)
+    product!:Product;
     
+    @HasMany(() => Product)
+    products!: Product[];
+
   }

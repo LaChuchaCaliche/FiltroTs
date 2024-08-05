@@ -8,36 +8,25 @@ import {
     ForeignKey,
     BelongsTo,
   } from "sequelize-typescript";
-import { Role } from "./roles";
+import { User } from "./user";
   @Table({
-    tableName: "users",
+    tableName: "carts",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
   })
-  export class User extends Model {
+  export class Entities extends Model {
     @PrimaryKey
     @AutoIncrement
     @Column({
       type: DataType.INTEGER,
     })
     id!: number;
-
-    @Column({
-      type: DataType.STRING(200),
-      allowNull: false,
-      unique: true,
-    })
-    email!: string;
-    @Column({
-      type: DataType.STRING(200),
-      allowNull: false
-    })
-    password!: string;
-    @ForeignKey(()=>Role)
+    @ForeignKey(()=>User)
     @Column({
       type: DataType.INTEGER,
       allowNull:false
     })
-    roleId!: number;
-    @BelongsTo(()=>Role)
-    role!:Role;
+    userId!: number;
+    @BelongsTo(()=>User)
+    user!:User[]
+    
   }

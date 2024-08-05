@@ -4,13 +4,9 @@ import {
     Column,
     Model,
     DataType,
-    ForeignKey,
-    BelongsTo,
     AutoIncrement,
 } from 'sequelize-typescript'; //En el anterior import realizamos un importe de lenguaje de base de datos para definir dentro de las clases
-import { User } from './user';
-import { autoInjectable } from 'tsyringe';
-import { timeStamp } from 'console';
+
 
 @Table({
     tableName: 'products',//nombre de la tabla
