@@ -3,7 +3,7 @@ import {Cart} from '../models/carts';
 
 
 @injectable() //Significa que la clase es un servicio que puede ser inyectado
-export default class cartRepository {
+export default class CartRepository {
     async findAll() {
         return await Cart.findAll();
     }

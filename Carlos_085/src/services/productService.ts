@@ -1,5 +1,4 @@
 import ProductRepository from '../repositories/productRepository';
-import { CreationAttributes } from 'sequelize';
 import { injectable, inject } from 'tsyringe';
 import { Product } from '../models';
 
@@ -17,11 +16,13 @@ export default class ProductService {
         return await this.productRepository.findById(id);
     }
 
-    async getProductsByUserId(userId: number) {
-        return await this.productRepository.findByUserId(userId);
-    }
-
-    async createProduct(product: CreationAttributes<Product>) {
+    async createProduct(product: Partial<Product>) {
         return await this.productRepository.create(product);
+    }
+    async updateProduct(id:number,updates:Partial<Product>){
+        return await this.productRepository.update(id,updates);
+    }
+    async deleteProduct(id:number){
+        return await this.productRepository.delete(id);
     }
 }

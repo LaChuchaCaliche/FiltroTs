@@ -3,7 +3,7 @@ import {Entitie} from '../models/entities';
 
 
 @injectable() //Significa que la clase es un servicio que puede ser inyectado
-export default class entitieRepository {
+export default class EntitieRepository {
     async findAll() {
         return await Entitie.findAll();
     }

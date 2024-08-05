@@ -1,25 +1,29 @@
-import OrdersRepository from '../repositories/ordersRepository';
 import { injectable, inject } from 'tsyringe';
 import { Cart } from '../models';
+import CartRepository from '../repositories/cartRepository';
+
 
 @injectable()
-export default class OrdersServices {
+export default class CartServices {
     constructor(
-        @inject(OrdersRepository) private orderRepository: OrdersRepository) {}
+        @inject(CartRepository) private cartRepository: CartRepository) {}
 
-    async getAllOrders() {
-        return await this.orderRepository.findAll();
+    async getAllcarts() {
+        return await this.cartRepository.findAll();
     }
 
-    async getOrderById(id: number) {
-        return await this.orderRepository.findById(id);
+    async getCartById(id: number) {
+        return await this.cartRepository.findById(id);
     }
 
-    async getOrdersUserId(userId: number) {
-        return await this.orderRepository.findByUserId(userId);
-    }
 
-    async createOrder(order: Partial<Order>) {
-        return await this.orderRepository.create(order);
+    async createCart(cart: Partial<Cart>) {
+        return await this.cartRepository.create(cart);
+    }
+    async updateCart(id:number,updates:Partial<Cart>){
+        return await this.cartRepository.update(id,updates);
+    }
+    async deleteCart(id:number){
+        return await this.cartRepository.delete(id);
     }
 }

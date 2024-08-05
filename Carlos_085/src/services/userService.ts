@@ -17,5 +17,12 @@ export default class UserService {
   async createUser(user: Partial<User>) {
     return await this.userRepository.create(user);
   }
-}
+  async updateUser(id:number,updates:Partial<User>){
+    return await this.userRepository.update(id,updates);
+    }
+  async deleteUser(id:number){
+    return await this.userRepository.delete(id);
+  }
+  }
+
 

@@ -14,4 +14,12 @@ export default class UserRepository {
     async create(user: Partial<User>) {
         return await User.create(user);
     }
+    async update(id:number,updates:Partial<User>){
+        return await User.update(updates,{where:{id}})
+    }
+    async delete(id:number){
+        const user = await this.findById(id);
+        if(!user) throw new Error('Usuario not found');
+        return await user.destroy();
+    }
 }

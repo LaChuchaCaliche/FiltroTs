@@ -15,11 +15,14 @@ export default class OrdersServices {
         return await this.orderRepository.findById(id);
     }
 
-    async getOrdersUserId(userId: number) {
-        return await this.orderRepository.findByUserId(userId);
-    }
-
     async createOrder(order: Partial<Order>) {
         return await this.orderRepository.create(order);
+    }
+
+    async updateOrder(id:number, updates:Partial<Order>){
+        return await this.orderRepository.update(id,updates);
+    }
+    async deleteGame(id:number){
+        return await this.orderRepository.delete(id);
     }
 }

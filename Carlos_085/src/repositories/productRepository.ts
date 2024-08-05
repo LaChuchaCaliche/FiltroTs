@@ -20,4 +20,9 @@ export default class ProductRepository {
         if(!product) throw new Error('Product not found');
         return await product.update(updates);
     }
+    async delete(id:number){
+        const product = await this.findById(id);
+        if(!product) throw new Error('Product not found');
+        return await product.destroy();
+    }
 }
