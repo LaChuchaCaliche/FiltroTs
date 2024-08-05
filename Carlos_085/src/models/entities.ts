@@ -5,28 +5,23 @@ import {
     DataType,
     PrimaryKey,
     AutoIncrement,
-    ForeignKey,
-    BelongsTo,
   } from "sequelize-typescript";
-import { User } from "./user";
   @Table({
-    tableName: "carts",
+    tableName: "entities",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
   })
-  export class Entities extends Model {
+  export class Entitie extends Model {
     @PrimaryKey
     @AutoIncrement
     @Column({
       type: DataType.INTEGER,
     })
     id!: number;
-    @ForeignKey(()=>User)
+  
     @Column({
-      type: DataType.INTEGER,
+      type: DataType.STRING,
       allowNull:false
     })
-    userId!: number;
-    @BelongsTo(()=>User)
-    user!:User[]
-    
+    name!: string;
+  
   }

@@ -11,6 +11,7 @@ import {
   } from "sequelize-typescript";
 import { Cart } from "./carts";
 import { Product } from "./product";
+import { Order } from "./orders";
  
   
   @Table({
@@ -49,8 +50,9 @@ import { Product } from "./product";
     productId!: number;
     @BelongsTo(()=>Product)
     product!:Product;
-    
+
     @HasMany(() => Product)
     products!: Product[];
-
+    @HasMany(()=>Order)
+    orders!:Order[];
   }

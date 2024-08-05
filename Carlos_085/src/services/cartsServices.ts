@@ -1,6 +1,6 @@
 import OrdersRepository from '../repositories/ordersRepository';
 import { injectable, inject } from 'tsyringe';
-import { Order} from '../models';
+import { Cart } from '../models';
 
 @injectable()
 export default class OrdersServices {

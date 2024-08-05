@@ -7,8 +7,12 @@ import {
     AutoIncrement,
     ForeignKey,
     BelongsTo,
+    HasOne,
+    HasMany,
   } from "sequelize-typescript";
 import { Role } from "./roles";
+import { Cart } from "./carts";
+import { Order } from "./orders";
   @Table({
     tableName: "users",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
@@ -32,6 +36,14 @@ import { Role } from "./roles";
       allowNull: false
     })
     password!: string;
+    @ForeignKey(()=>Cart)
+    @Column({
+      type:DataType.INTEGER,
+      allowNull:false
+    })
+    cartId!: number;
+    @BelongsTo(()=>Cart)
+    cart!:Cart;
     @ForeignKey(()=>Role)
     @Column({
       type: DataType.INTEGER,
@@ -40,4 +52,10 @@ import { Role } from "./roles";
     roleId!: number;
     @BelongsTo(()=>Role)
     role!:Role;
+   
+ 
+    @HasOne(()=>Cart)
+    carts!:Cart[];
+    @HasMany(()=>Order)
+    orders!:Order[];
   }

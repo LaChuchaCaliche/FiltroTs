@@ -13,7 +13,7 @@ import { User } from "./user";
     tableName: "carts",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
   })
-  export class Cart extends Model {
+  export class Cart extends Model{
     @PrimaryKey
     @AutoIncrement
     @Column({
@@ -27,6 +27,5 @@ import { User } from "./user";
     })
     userId!: number;
     @BelongsTo(()=>User)
-    user!:User[]
-    
+    user!:User[];
   }

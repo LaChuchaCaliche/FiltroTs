@@ -5,7 +5,11 @@ import {
     Model,
     DataType,
     AutoIncrement,
+    HasMany,
+    ForeignKey,
+    BelongsTo,
 } from 'sequelize-typescript'; //En el anterior import realizamos un importe de lenguaje de base de datos para definir dentro de las clases
+import { ProductCart } from './productCart';
 
 
 @Table({
@@ -40,4 +44,15 @@ export class Product extends Model{
         type:DataType.INTEGER
     })
     stock!:number;
+    @ForeignKey(()=>ProductCart)
+    @Column({
+        type:DataType.INTEGER,
+        allowNull:false
+    })
+    productCartId!: number;
+    @BelongsTo(()=>ProductCart)
+    productCart!:ProductCart;
+
+    @HasMany(()=>ProductCart)
+    productsCart!:ProductCart[];
 }

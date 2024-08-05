@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe';
 import { Product } from '../models';
-import { CreationAttributes } from 'sequelize';
+
 
 @injectable() //Significa que la clase es un servicio que puede ser inyectado
 export default class ProductRepository {
@@ -12,11 +12,12 @@ export default class ProductRepository {
         return await Product.findByPk(id);
     }
 
-    async findByUserId(id: number) {
-        return await Product.findAll();
-    }
-
-    async create(product: CreationAttributes<Product>) {
+    async create(product: Partial<Product>) {
         return await Product.create(product);
+    }
+    async update(id:number, updates: Partial<Product>){
+        const product = await this.findById(id);
+        if(!product) throw new Error('Product not found');
+        return await product.update(updates);
     }
 }

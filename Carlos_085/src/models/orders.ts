@@ -7,6 +7,7 @@ import {
     BelongsTo,
     PrimaryKey,
     AutoIncrement,
+    HasMany,
    
 } from 'sequelize-typescript';
 import { User } from './user';
@@ -45,6 +46,5 @@ export class Order extends Model {
     ProductCartId!: number;
     @BelongsTo (()=>ProductCart)
     product!: Product;
-   
 
 }
