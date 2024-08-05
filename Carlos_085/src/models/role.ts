@@ -5,15 +5,15 @@ import {
     DataType,
     PrimaryKey,
     AutoIncrement,
-    ForeignKey,
-    BelongsTo,
+    HasMany,
   } from "sequelize-typescript";
-import { Role } from "./role";
+import { User } from "./user";
+  
   @Table({
-    tableName: "users",
+    tableName: "role",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
   })
-  export class User extends Model {
+  export class Role extends Model {
     @PrimaryKey
     @AutoIncrement
     @Column({
@@ -26,18 +26,7 @@ import { Role } from "./role";
       allowNull: false,
       unique: true,
     })
-    email!: string;
-    @Column({
-      type: DataType.STRING(200),
-      allowNull: false
-    })
-    password!: string;
-    @ForeignKey(()=>Role)
-    @Column({
-      type: DataType.INTEGER,
-      allowNull:false
-    })
-    roleId!: number;
-    @BelongsTo(()=>Role)
-    role!:Role;
+    name!: string;
+    @HasMany(() => User)
+    users!:User[];
   }

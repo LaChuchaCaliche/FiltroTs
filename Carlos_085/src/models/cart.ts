@@ -5,10 +5,10 @@ import {
     DataType,
     PrimaryKey,
     AutoIncrement,
+    HasMany,
     ForeignKey,
     BelongsTo,
   } from "sequelize-typescript";
-import { Role } from "./role";
   @Table({
     tableName: "users",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
@@ -32,12 +32,13 @@ import { Role } from "./role";
       allowNull: false
     })
     password!: string;
-    @ForeignKey(()=>Role)
+    @ForeignKey(()=>Rol)
     @Column({
       type: DataType.INTEGER,
       allowNull:false
     })
     roleId!: number;
-    @BelongsTo(()=>Role)
-    role!:Role;
+    @BelongsTo(()=>Rol);
+    role!:Rol;
+    
   }

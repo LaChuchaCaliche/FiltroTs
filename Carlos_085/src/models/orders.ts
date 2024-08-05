@@ -23,28 +23,14 @@ export class orders extends Model {
         type:DataType.INTEGER,
     })
     id!:number;
-    @Column({
-        type: DataType.STRING,
-        allowNull: false,
-    })
-    description!: string;
-    @ForeignKey(()=>Product)
-    @Column({
-        type:DataType.INTEGER,
-        allowNull:false
-    })
-    productId!: number;
-
-    @BelongsTo(()=>Product)
-    product!:Product;
-
     @ForeignKey(() => User)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     userId!: number;
-
     @BelongsTo(() => User)
     user!: User;
+   
+
 }

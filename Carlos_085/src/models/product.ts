@@ -13,36 +13,35 @@ import { autoInjectable } from 'tsyringe';
 import { timeStamp } from 'console';
 
 @Table({
-    tableName: 'products',
+    tableName: 'products',//nombre de la tabla
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
 })
 export class Product extends Model{
-    @PrimaryKey
-    @AutoIncrement
+    @PrimaryKey //definimos primary key
+    @AutoIncrement //definimos autoincrement
     @Column({
-        type: DataType.INTEGER
+        type: DataType.INTEGER //definimos el datatype para sql
     })
-    id!:number;
+    id!:number; //tipamos el id dentro de ts
 
     @Column({
-        type: DataType.STRING,
+        type: DataType.STRING(200),
         allowNull: false,
     })
     name!: string;
 
     @Column({
-        type: DataType.FLOAT,
+        type: DataType.DECIMAL(10,2),
         allowNull: false,
     })
     price!: number;
 
-    @ForeignKey(() => User)
     @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
+        type:DataType.STRING,
     })
-    userId!: number;
-
-    @BelongsTo(() => User)
-    user!: User;
+    description?: string;
+    @Column({
+        type:DataType.INTEGER
+    })
+    stock!:number;
 }
