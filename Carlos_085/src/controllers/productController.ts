@@ -15,11 +15,6 @@ export default class ProductController {
         res.json(product);
     }
 
-    static async getProductsByUserId(req: Request, res: Response) {
-        const productService = container.resolve(ProductService);
-        const products = await productService.getProductsByUserId(parseInt(req.params.userId));
-        res.json(products);
-    }
 
     static async createProduct(req: Request, res: Response) {
         const productService = container.resolve(ProductService);

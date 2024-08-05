@@ -5,5 +5,4 @@ export const orderRouter = Router();
 
 orderRouter.get('/', OrderController.getAllOrders);
 orderRouter.get('/:id', OrderController.getOrderById);
-orderRouter.get('/user/:userId', OrderController.getOrdersByUserId);
 orderRouter.post('/', OrderController.createOrder);

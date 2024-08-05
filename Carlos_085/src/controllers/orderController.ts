@@ -15,11 +15,6 @@ export default class orderController {
         res.json(order);
     }
 
-    static async getOrdersByUserId(req: Request, res: Response) {
-        const orderService = container.resolve(OrdersServices);
-        const order = await orderService.getOrdersUserId(parseInt(req.params.userId));
-        res.json(order);
-    }
 
     static async createOrder(req: Request, res: Response) {
         const ordersServices = container.resolve(OrdersServices);
