@@ -15,31 +15,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const productRepository_1 = __importDefault(require("../repositories/productRepository"));
 const tsyringe_1 = require("tsyringe");
-let ProductService = class ProductService {
-    constructor(productRepository) {
-        this.productRepository = productRepository;
+const productCartRepository_1 = __importDefault(require("../repositories/productCartRepository"));
+let ProductCartService = class ProductCartService {
+    constructor(productCartRepository) {
+        this.productCartRepository = productCartRepository;
     }
-    async getAllProducts() {
-        return await this.productRepository.findAll();
+    async getAllProductCarts() {
+        return this.productCartRepository.findAll();
     }
-    async getProductById(id) {
-        return await this.productRepository.findById(id);
+    async getProductCartById(id) {
+        return await this.productCartRepository.findById(id);
     }
-    async createProduct(product) {
-        return await this.productRepository.create(product);
+    async createProductCart(productCart) {
+        return await this.productCartRepository.create(productCart);
     }
-    async updateProduct(id, updates) {
-        return await this.productRepository.update(id, updates);
+    async updateProductCart(id, updates) {
+        return await this.productCartRepository.update(id, updates);
     }
-    async deleteProduct(id) {
-        return await this.productRepository.delete(id);
+    async deleteProductCart(id) {
+        return await this.productCartRepository.delete(id);
     }
 };
-ProductService = __decorate([
+ProductCartService = __decorate([
     (0, tsyringe_1.injectable)(),
-    __param(0, (0, tsyringe_1.inject)(productRepository_1.default)),
-    __metadata("design:paramtypes", [productRepository_1.default])
-], ProductService);
-exports.default = ProductService;
+    __param(0, (0, tsyringe_1.inject)(productCartRepository_1.default)),
+    __metadata("design:paramtypes", [productCartRepository_1.default])
+], ProductCartService);
+exports.default = ProductCartService;

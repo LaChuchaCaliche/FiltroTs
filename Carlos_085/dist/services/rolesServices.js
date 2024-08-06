@@ -15,31 +15,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const productRepository_1 = __importDefault(require("../repositories/productRepository"));
 const tsyringe_1 = require("tsyringe");
-let ProductService = class ProductService {
-    constructor(productRepository) {
-        this.productRepository = productRepository;
+const rolesRepository_1 = __importDefault(require("../repositories/rolesRepository"));
+let RoleService = class RoleService {
+    constructor(roleRepository) {
+        this.roleRepository = roleRepository;
     }
-    async getAllProducts() {
-        return await this.productRepository.findAll();
+    async getAllRoles() {
+        return this.roleRepository.findAll();
     }
-    async getProductById(id) {
-        return await this.productRepository.findById(id);
+    async getRolesById(id) {
+        return await this.roleRepository.findById(id);
     }
-    async createProduct(product) {
-        return await this.productRepository.create(product);
+    async createRole(role) {
+        return await this.roleRepository.create(role);
     }
-    async updateProduct(id, updates) {
-        return await this.productRepository.update(id, updates);
+    async updateRole(id, updates) {
+        return await this.roleRepository.update(id, updates);
     }
-    async deleteProduct(id) {
-        return await this.productRepository.delete(id);
+    async deleteRole(id) {
+        return await this.roleRepository.delete(id);
     }
 };
-ProductService = __decorate([
+RoleService = __decorate([
     (0, tsyringe_1.injectable)(),
-    __param(0, (0, tsyringe_1.inject)(productRepository_1.default)),
-    __metadata("design:paramtypes", [productRepository_1.default])
-], ProductService);
-exports.default = ProductService;
+    __param(0, (0, tsyringe_1.inject)(rolesRepository_1.default)),
+    __metadata("design:paramtypes", [rolesRepository_1.default])
+], RoleService);
+exports.default = RoleService;

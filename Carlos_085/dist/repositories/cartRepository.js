@@ -7,31 +7,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsyringe_1 = require("tsyringe");
-const models_1 = require("../models");
-let ProductRepository = class ProductRepository {
+const carts_1 = require("../models/carts");
+let CartRepository = class CartRepository {
     async findAll() {
-        return await models_1.Product.findAll();
+        return await carts_1.Cart.findAll();
     }
     async findById(id) {
-        return await models_1.Product.findByPk(id);
+        return await carts_1.Cart.findByPk(id);
     }
-    async create(product) {
-        return await models_1.Product.create(product);
+    async findByUserId(userId) {
+        return await carts_1.Cart.findAll({ where: { userId } });
+    }
+    async create(cart) {
+        return await carts_1.Cart.create(cart);
     }
     async update(id, updates) {
-        const product = await this.findById(id);
-        if (!product)
-            throw new Error('Product not found');
-        return await product.update(updates);
+        const cart = await this.findById(id);
+        if (!cart)
+            throw new Error('Cart not found');
+        return await cart.update(updates);
     }
     async delete(id) {
-        const product = await this.findById(id);
-        if (!product)
-            throw new Error('Product not found');
-        return await product.destroy();
+        const cart = await this.findById(id);
+        if (!cart)
+            throw new Error('Cart not found');
+        return await cart.destroy();
     }
 };
-ProductRepository = __decorate([
+CartRepository = __decorate([
     (0, tsyringe_1.injectable)() //Significa que la clase es un servicio que puede ser inyectado
-], ProductRepository);
-exports.default = ProductRepository;
+], CartRepository);
+exports.default = CartRepository;

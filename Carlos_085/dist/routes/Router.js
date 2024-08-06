@@ -2,7 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const _1 = require("./");
+const ordersRoutes_1 = require("./ordersRoutes");
+const roleRotues_1 = require("./roleRotues");
+const cartRoutes_1 = require("./cartRoutes");
+const entitiesRoutes_1 = require("./entitiesRoutes");
+const productCartRoutes_1 = require("./productCartRoutes");
 const router = (0, express_1.Router)();
 router.use('/users', _1.userRouter);
 router.use('/products', _1.productRouter);
+router.use('/orders', ordersRoutes_1.orderRouter);
+router.use('/roles', roleRotues_1.roleRouter);
+router.use('/carts', cartRoutes_1.cartRouter);
+router.use('/entities', entitiesRoutes_1.entitiesRouter);
+router.use('/productscarts', productCartRoutes_1.productCartRouter);
 exports.default = router;

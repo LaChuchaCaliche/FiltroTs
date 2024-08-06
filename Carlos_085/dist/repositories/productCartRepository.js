@@ -8,30 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsyringe_1 = require("tsyringe");
 const models_1 = require("../models");
-let ProductRepository = class ProductRepository {
+let ProductCartRepository = class ProductCartRepository {
     async findAll() {
-        return await models_1.Product.findAll();
+        return await models_1.ProductCart.findAll();
     }
     async findById(id) {
-        return await models_1.Product.findByPk(id);
+        return await models_1.ProductCart.findByPk(id);
     }
-    async create(product) {
-        return await models_1.Product.create(product);
+    async create(productCart) {
+        return await models_1.ProductCart.create(productCart);
     }
     async update(id, updates) {
-        const product = await this.findById(id);
-        if (!product)
-            throw new Error('Product not found');
-        return await product.update(updates);
+        const productCart = await this.findById(id);
+        if (!productCart)
+            throw new Error('ProductCart not found');
+        return await productCart.update(updates);
     }
     async delete(id) {
-        const product = await this.findById(id);
-        if (!product)
+        const productCart = await this.findById(id);
+        if (!productCart)
             throw new Error('Product not found');
-        return await product.destroy();
+        return await productCart.destroy();
     }
 };
-ProductRepository = __decorate([
+ProductCartRepository = __decorate([
     (0, tsyringe_1.injectable)() //Significa que la clase es un servicio que puede ser inyectado
-], ProductRepository);
-exports.default = ProductRepository;
+], ProductCartRepository);
+exports.default = ProductCartRepository;

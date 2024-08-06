@@ -15,31 +15,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const productRepository_1 = __importDefault(require("../repositories/productRepository"));
+const ordersRepository_1 = __importDefault(require("../repositories/ordersRepository"));
 const tsyringe_1 = require("tsyringe");
-let ProductService = class ProductService {
-    constructor(productRepository) {
-        this.productRepository = productRepository;
+let OrdersServices = class OrdersServices {
+    constructor(orderRepository) {
+        this.orderRepository = orderRepository;
     }
-    async getAllProducts() {
-        return await this.productRepository.findAll();
+    async getAllOrders() {
+        return await this.orderRepository.findAll();
     }
-    async getProductById(id) {
-        return await this.productRepository.findById(id);
+    async getOrderById(id) {
+        return await this.orderRepository.findById(id);
     }
-    async createProduct(product) {
-        return await this.productRepository.create(product);
+    async createOrder(order) {
+        return await this.orderRepository.create(order);
     }
-    async updateProduct(id, updates) {
-        return await this.productRepository.update(id, updates);
+    async updateOrder(id, updates) {
+        return await this.orderRepository.update(id, updates);
     }
-    async deleteProduct(id) {
-        return await this.productRepository.delete(id);
+    async deleteOrder(id) {
+        return await this.orderRepository.delete(id);
     }
 };
-ProductService = __decorate([
+OrdersServices = __decorate([
     (0, tsyringe_1.injectable)(),
-    __param(0, (0, tsyringe_1.inject)(productRepository_1.default)),
-    __metadata("design:paramtypes", [productRepository_1.default])
-], ProductService);
-exports.default = ProductService;
+    __param(0, (0, tsyringe_1.inject)(ordersRepository_1.default)),
+    __metadata("design:paramtypes", [ordersRepository_1.default])
+], OrdersServices);
+exports.default = OrdersServices;

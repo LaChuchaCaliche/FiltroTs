@@ -10,40 +10,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
-const sequelize_typescript_1 = require("sequelize-typescript");
-const user_1 = require("./user");
+const sequelize_typescript_1 = require("sequelize-typescript"); //En el anterior import realizamos un importe de lenguaje de base de datos para definir dentro de las clases
+const productCart_1 = require("./productCart");
 let Product = class Product extends sequelize_typescript_1.Model {
 };
 exports.Product = Product;
 __decorate([
+    sequelize_typescript_1.PrimaryKey //definimos primary key
+    ,
+    sequelize_typescript_1.AutoIncrement //definimos autoincrement
+    ,
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
+        type: sequelize_typescript_1.DataType.INTEGER //definimos el datatype para sql
+    }),
+    __metadata("design:type", Number)
+], Product.prototype, "id", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING(200),
         allowNull: false,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "name", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.FLOAT,
+        type: sequelize_typescript_1.DataType.DECIMAL(10, 2),
         allowNull: false,
     }),
     __metadata("design:type", Number)
 ], Product.prototype, "price", void 0);
 __decorate([
-    (0, sequelize_typescript_1.ForeignKey)(() => user_1.User),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.INTEGER,
-        allowNull: false,
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "description", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.INTEGER
     }),
     __metadata("design:type", Number)
-], Product.prototype, "userId", void 0);
+], Product.prototype, "stock", void 0);
 __decorate([
-    (0, sequelize_typescript_1.BelongsTo)(() => user_1.User),
-    __metadata("design:type", user_1.User)
-], Product.prototype, "user", void 0);
+    (0, sequelize_typescript_1.HasMany)(() => productCart_1.ProductCart),
+    __metadata("design:type", Array)
+], Product.prototype, "ProductCart", void 0);
 exports.Product = Product = __decorate([
     (0, sequelize_typescript_1.Table)({
-        tableName: 'products',
+        tableName: 'products', //nombre de la tabla
         timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
     })
 ], Product);

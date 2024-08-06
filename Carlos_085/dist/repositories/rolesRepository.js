@@ -7,31 +7,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsyringe_1 = require("tsyringe");
-const user_1 = require("../models/user");
-let UserRepository = class UserRepository {
+const models_1 = require("../models");
+let RoleRepository = class RoleRepository {
     async findAll() {
-        return await user_1.User.findAll();
+        return await models_1.Role.findAll();
     }
     async findById(id) {
-        return await user_1.User.findByPk(id);
+        return await models_1.Role.findByPk(id);
     }
-    async create(user) {
-        return await user_1.User.create(user);
+    async create(role) {
+        return await models_1.Role.create(role);
     }
     async update(id, updates) {
-        return await user_1.User.update(updates, { where: { id } });
+        const role = await this.findById(id);
+        if (!role)
+            throw new Error('ProductCart not found');
+        return await role.update(updates);
     }
     async delete(id) {
-        const user = await this.findById(id);
-        if (!user)
-            throw new Error('Usuario not found');
-        return await user.destroy();
-    }
-    async findByEmail(email) {
-        return await user_1.User.findOne({ where: { email } });
+        const role = await this.findById(id);
+        if (!role)
+            throw new Error('Product not found');
+        return await role.destroy();
     }
 };
-UserRepository = __decorate([
-    (0, tsyringe_1.injectable)()
-], UserRepository);
-exports.default = UserRepository;
+RoleRepository = __decorate([
+    (0, tsyringe_1.injectable)() //Significa que la clase es un servicio que puede ser inyectado
+], RoleRepository);
+exports.default = RoleRepository;

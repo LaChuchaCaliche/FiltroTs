@@ -15,31 +15,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const productRepository_1 = __importDefault(require("../repositories/productRepository"));
 const tsyringe_1 = require("tsyringe");
-let ProductService = class ProductService {
-    constructor(productRepository) {
-        this.productRepository = productRepository;
+const entitiesRepository_1 = __importDefault(require("../repositories/entitiesRepository"));
+let EntitieServices = class EntitieServices {
+    constructor(entitieRepository) {
+        this.entitieRepository = entitieRepository;
     }
-    async getAllProducts() {
-        return await this.productRepository.findAll();
+    async getAllentities() {
+        return await this.entitieRepository.findAll();
     }
-    async getProductById(id) {
-        return await this.productRepository.findById(id);
+    async getEntitieById(id) {
+        return await this.entitieRepository.findById(id);
     }
-    async createProduct(product) {
-        return await this.productRepository.create(product);
+    async createEntitie(entitie) {
+        return await this.entitieRepository.create(entitie);
     }
-    async updateProduct(id, updates) {
-        return await this.productRepository.update(id, updates);
+    async updateEntitie(id, updates) {
+        return await this.entitieRepository.update(id, updates);
     }
-    async deleteProduct(id) {
-        return await this.productRepository.delete(id);
+    async deleteEntitie(id) {
+        return await this.entitieRepository.delete(id);
     }
 };
-ProductService = __decorate([
+EntitieServices = __decorate([
     (0, tsyringe_1.injectable)(),
-    __param(0, (0, tsyringe_1.inject)(productRepository_1.default)),
-    __metadata("design:paramtypes", [productRepository_1.default])
-], ProductService);
-exports.default = ProductService;
+    __param(0, (0, tsyringe_1.inject)(entitiesRepository_1.default)),
+    __metadata("design:paramtypes", [entitiesRepository_1.default])
+], EntitieServices);
+exports.default = EntitieServices;

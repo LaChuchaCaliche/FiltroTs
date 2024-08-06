@@ -9,5 +9,6 @@ const productController_1 = __importDefault(require("../controllers/productContr
 exports.productRouter = (0, express_1.Router)();
 exports.productRouter.get('/', productController_1.default.getAllProducts);
 exports.productRouter.get('/:id', productController_1.default.getProductById);
-exports.productRouter.get('/user/:userId', productController_1.default.getProductsByUserId);
 exports.productRouter.post('/', productController_1.default.createProduct);
+exports.productRouter.put("/:id", productController_1.default.updateProduct);
+exports.productRouter.delete("/:id", productController_1.default.deleteProduct);

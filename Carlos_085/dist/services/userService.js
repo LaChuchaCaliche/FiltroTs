@@ -30,6 +30,12 @@ let UserService = class UserService {
     async createUser(user) {
         return await this.userRepository.create(user);
     }
+    async updateUser(id, updates) {
+        return await this.userRepository.update(id, updates);
+    }
+    async deleteUser(id) {
+        return await this.userRepository.delete(id);
+    }
 };
 UserService = __decorate([
     (0, tsyringe_1.injectable)(),

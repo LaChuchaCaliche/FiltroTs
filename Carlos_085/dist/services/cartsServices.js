@@ -15,31 +15,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const productRepository_1 = __importDefault(require("../repositories/productRepository"));
 const tsyringe_1 = require("tsyringe");
-let ProductService = class ProductService {
-    constructor(productRepository) {
-        this.productRepository = productRepository;
+const cartRepository_1 = __importDefault(require("../repositories/cartRepository"));
+let CartServices = class CartServices {
+    constructor(cartRepository) {
+        this.cartRepository = cartRepository;
     }
-    async getAllProducts() {
-        return await this.productRepository.findAll();
+    async getAllCarts() {
+        return await this.cartRepository.findAll();
     }
-    async getProductById(id) {
-        return await this.productRepository.findById(id);
+    async getCartById(id) {
+        return await this.cartRepository.findById(id);
     }
-    async createProduct(product) {
-        return await this.productRepository.create(product);
+    async createCart(cart) {
+        return await this.cartRepository.create(cart);
     }
-    async updateProduct(id, updates) {
-        return await this.productRepository.update(id, updates);
+    async updateCart(id, updates) {
+        return await this.cartRepository.update(id, updates);
     }
-    async deleteProduct(id) {
-        return await this.productRepository.delete(id);
+    async deleteCart(id) {
+        return await this.cartRepository.delete(id);
     }
 };
-ProductService = __decorate([
+CartServices = __decorate([
     (0, tsyringe_1.injectable)(),
-    __param(0, (0, tsyringe_1.inject)(productRepository_1.default)),
-    __metadata("design:paramtypes", [productRepository_1.default])
-], ProductService);
-exports.default = ProductService;
+    __param(0, (0, tsyringe_1.inject)(cartRepository_1.default)),
+    __metadata("design:paramtypes", [cartRepository_1.default])
+], CartServices);
+exports.default = CartServices;
