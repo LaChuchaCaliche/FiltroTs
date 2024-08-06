@@ -22,7 +22,7 @@ export default class OrdersServices {
     async updateOrder(id:number, updates:Partial<Order>){
         return await this.orderRepository.update(id,updates);
     }
-    async deleteGame(id:number){
+    async deleteOrder(id:number){
         return await this.orderRepository.delete(id);
     }
 }

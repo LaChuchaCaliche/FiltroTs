@@ -8,7 +8,7 @@ export default class CartServices {
     constructor(
         @inject(CartRepository) private cartRepository: CartRepository) {}
 
-    async getAllcarts() {
+    async getAllCarts() {
         return await this.cartRepository.findAll();
     }
 
