@@ -27,6 +27,6 @@ import { User } from "./user";
       unique: true,
     })
     name!: string;
-    @HasMany(() => User)
-    users!:User[];
+    @HasMany(()=>User)
+    user!:User[];
   }

@@ -44,15 +44,6 @@ export class Product extends Model{
         type:DataType.INTEGER
     })
     stock!:number;
-    @ForeignKey(()=>ProductCart)
-    @Column({
-        type:DataType.INTEGER,
-        allowNull:false
-    })
-    productCartId!: number;
-    @BelongsTo(()=>ProductCart)
-    productCart!:ProductCart;
-
     @HasMany(()=>ProductCart)
-    productsCart!:ProductCart[];
+    ProductCart!:ProductCart[]
 }

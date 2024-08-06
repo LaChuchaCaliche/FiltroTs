@@ -36,14 +36,6 @@ import { Order } from "./orders";
       allowNull: false
     })
     password!: string;
-    @ForeignKey(()=>Cart)
-    @Column({
-      type:DataType.INTEGER,
-      allowNull:false
-    })
-    cartId!: number;
-    @BelongsTo(()=>Cart)
-    cart!:Cart;
     @ForeignKey(()=>Role)
     @Column({
       type: DataType.INTEGER,
@@ -52,10 +44,7 @@ import { Order } from "./orders";
     roleId!: number;
     @BelongsTo(()=>Role)
     role!:Role;
-   
- 
     @HasOne(()=>Cart)
-    carts!:Cart[];
-    @HasMany(()=>Order)
-    orders!:Order[];
+    cart!:Cart[]
+
   }

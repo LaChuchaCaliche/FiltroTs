@@ -14,7 +14,7 @@ router.use('/orders',orderRouter)
 router.use('/roles',roleRouter)
 router.use('/carts',cartRouter)
 router.use('/entities',entitiesRouter)
-router.use('/productCart',productCartRouter)
+router.use('/productscarts',productCartRouter)
 
 
 export default router;

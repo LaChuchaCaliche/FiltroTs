@@ -5,9 +5,9 @@ import {
     DataType,
     PrimaryKey,
     AutoIncrement,
-    HasMany,
     ForeignKey,
     BelongsTo,
+    HasMany,
   } from "sequelize-typescript";
 import { Cart } from "./carts";
 import { Product } from "./product";
@@ -15,7 +15,7 @@ import { Order } from "./orders";
  
   
   @Table({
-    tableName: "ProductCart",
+    tableName: "productCart",
     timestamps: true, // Si deseas que Sequelize maneje los timestamps automáticamente
   })
   export class ProductCart extends Model {
@@ -29,30 +29,24 @@ import { Order } from "./orders";
     @Column({
       type: DataType.INTEGER,
       allowNull: false,
-      unique: true,
     })
     quantity!: number;
-   
     @ForeignKey(()=>Cart)
     @Column({
       type: DataType.INTEGER,
-      allowNull:false
+      allowNull: false
     })
-    cartId!: number;
+    cartId!:number
     @BelongsTo(()=>Cart)
-    cart!:Cart;
-
+    cart!:Cart
     @ForeignKey(()=>Product)
     @Column({
-      type: DataType.INTEGER,
+      type:DataType.INTEGER,
       allowNull:false
     })
-    productId!: number;
+    productId!:number
     @BelongsTo(()=>Product)
-    product!:Product;
-
-    @HasMany(() => Product)
-    products!: Product[];
-    @HasMany(()=>Order)
-    orders!:Order[];
+    product!:Product[];
+  
+    
   }
