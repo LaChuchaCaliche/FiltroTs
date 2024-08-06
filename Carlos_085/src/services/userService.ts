@@ -23,6 +23,7 @@ export default class UserService {
   async deleteUser(id:number){
     return await this.userRepository.delete(id);
   }
+
   }
 
 

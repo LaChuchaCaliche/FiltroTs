@@ -22,4 +22,7 @@ export default class UserRepository {
         if(!user) throw new Error('Usuario not found');
         return await user.destroy();
     }
+    async findByEmail(email: string) {
+        return await User.findOne({ where: { email } });
+    }
 }

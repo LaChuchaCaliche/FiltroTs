@@ -28,22 +28,22 @@ export class Order extends Model {
         type: DataType.DECIMAL(10,2)
     })
     total!:number
-    // @ForeignKey(() => User)
-    // @Column({
-    //     type: DataType.INTEGER,
-    //     allowNull: false,
-    // })
-    // userId!: number;
-    // @BelongsTo(() => User)
-    // user!: User;
+    @ForeignKey(() => User)
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+    })
+    userId!: number;
+    @BelongsTo(() => User)
+    user!: User;
 
-    // @ForeignKey(()=>ProductCart)
-    // @Column({
-    //     type: DataType.INTEGER,
-    //     allowNull:false
-    // })
-    // ProductCartId!: number;
-    // @BelongsTo (()=>ProductCart)
-    // product!: Product;
+    @ForeignKey(()=>ProductCart)
+    @Column({
+        type: DataType.INTEGER,
+        allowNull:false
+    })
+    ProductCartId!: number;
+    @BelongsTo (()=>ProductCart)
+    product!: Product;
 
 }
